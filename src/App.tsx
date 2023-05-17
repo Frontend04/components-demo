@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Person from './Person/Person';
 
-function App() {
+const App = () => {
+  const [people, setPeople] = useState([
+    {name: 'Triss', age:30, hobby:'Video Game' },
+    {name: 'Leo', age:20, hobby:'Sport Box' }
+  ])
+
+  const charangeName = () => {
+    setPeople([
+      {name: 'Max', age:60, hobby:'Video Game' },
+      {name: 'Aza', age:50, hobby:'Sport Box' }
+    ])
+  }
+   
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Person name={people[0].name} age={people[0].age}><b>Hobby: </b><span>{people[0].hobby}</span> </Person>
+      <Person name={people[1].name} age={people[1].age}><b>Hobby: </b><span>{people[1].hobby}</span> </Person>
+
+      <div>
+        <button onClick={charangeName}>Charge name</button>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
